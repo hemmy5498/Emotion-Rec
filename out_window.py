@@ -146,7 +146,7 @@ class Ui_OutputDialog(QDialog):
         :param class_names: known face names
         :return:
         """
-        def mark_emotion(name):
+        def mark_emotion(name, emotion):
             """
             :param name: detected face known or unknown one
             :return:
@@ -164,7 +164,7 @@ class Ui_OutputDialog(QDialog):
                                 self.ClockInButton.setChecked(False)
 
                                 self.NameLabel.setText(name)
-                                self.StatusLabel.setText('Clocked In')
+                                self.StatusLabel.setText('Clocked In\n'+'Name: '+name+'\nDetected Emotion: '+emotion)
                                 self.HoursLabel.setText('Measuring')
                                 self.MinLabel.setText('')
 
@@ -237,7 +237,7 @@ class Ui_OutputDialog(QDialog):
                 cv2.putText(frame, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
                 annotated_img=self.annotate_img(frame, faceLoc, pred_emotion)
                 self.pred_data = [name, pred_emotion]
-            mark_emotion(name)
+            mark_emotion(name, pred_emotion)
 
             #mark_emotion(', '.join(pred_emotion_list))
         
