@@ -119,7 +119,7 @@ class Ui_OutputDialog(QDialog):
     def annotate_img(self, img, face_detected, pred_emotion, fname=None):
 
         x,y,_,_ = face_detected #w,h not needed
-        cv2.putText(img, pred_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)  
+        #cv2.putText(img, pred_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)  
         
         resized_img = cv2.resize(img, (1000, 700))  
         if fname==None:
@@ -164,7 +164,7 @@ class Ui_OutputDialog(QDialog):
                                 self.ClockInButton.setChecked(False)
 
                                 self.NameLabel.setText(name)
-                                self.StatusLabel.setText('Clocked In\n'+'Name: '+name+'\nDetected Emotion: '+emotion)
+                                self.StatusLabel.setText('Clocked In\n'+'\n'+emotion)
                                 self.HoursLabel.setText('Measuring')
                                 self.MinLabel.setText('')
 
