@@ -27,7 +27,9 @@ class Ui_OutputDialog(QDialog):
         self.logger = 1*1000#60*1000 # in seconds
         self.counter = 0
         self.emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
-
+        self.df = pd.DataFrame(columns = ['Name', 'Date']+list(self.emotions))
+        self.emotion_default = {emo:0 for emo in self.emotions}
+        self.date = datetime.datetime.now().strftime("%y/%m/%d %H:%M:%S")
         
 
         #Update time
@@ -172,7 +174,7 @@ class Ui_OutputDialog(QDialog):
 
                                 self.NameLabel.setText(name)
                                 self.StatusLabel.setText('Clocked In')
-                                self.HoursLabel.setText('Measuring')
+                                #self.HoursLabel.setText('Measuring')
                                 self.MinLabel.setText('')
 
                                 #self.CalculateElapse(name)
@@ -209,6 +211,7 @@ class Ui_OutputDialog(QDialog):
                                 self.MinLabel.setText("{:.0f}".format(abs(self.ElapseHours.total_seconds() / 60)%60) + 'm')
                                 self.HoursLabel.setText("{:.0f}".format(abs(self.ElapseHours.total_seconds() / 60**2)) + 'h')
                                 self.ClockOutButton.setEnabled(True)
+                                self.df.to_csv('my_csv.csv', mode='a', header=False)
                             else:
                                 print('Not clicked.')
                                 self.ClockOutButton.setEnabled(True)
@@ -296,7 +299,10 @@ class Ui_OutputDialog(QDialog):
         
         if self.counter*40 == self.logger:
             self.counter=0
-            #do the logging here
+            if self.df.isin(self.pred_data).any().sum()==2:
+                self.df.loc[self.pred_data[0] == self.df['Name'], self.pred_data[1]]+=1
+            else:
+                self.df = self.df.append({'Name':self.pred_data[0], 'Date':self.date, **self.emotion_default}, ignore_index=True)
 
     
     def displayImage(self, image, encode_list, class_names, window=1):
