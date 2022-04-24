@@ -34,6 +34,8 @@ class Ui_OutputDialog(QDialog):
         current_time = datetime.datetime.now().strftime("%I:%M %p")
         self.Date_Label.setText(current_date)
         self.Time_Label.setText(current_time)
+        self.TimeList1 = []
+        self.TimeList2 = []
 
     @pyqtSlot()
     def startVideo(self, camera_name):
@@ -164,7 +166,7 @@ class Ui_OutputDialog(QDialog):
                                 self.ClockInButton.setChecked(False)
 
                                 self.NameLabel.setText(name)
-                                self.StatusLabel.setText('Clocked In\n'+'\n'+emotion)
+                                self.StatusLabel.setText('Clocked In')
                                 self.HoursLabel.setText('Measuring')
                                 self.MinLabel.setText('')
 
@@ -203,6 +205,7 @@ class Ui_OutputDialog(QDialog):
                             else:
                                 print('Not clicked.')
                                 self.ClockOutButton.setEnabled(True)
+            self.DetectedEmotionLabel.setText(' '*15+emotion)
         
         
 

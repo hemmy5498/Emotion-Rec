@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>951</width>
+    <width>971</width>
     <height>591</height>
    </rect>
   </property>
@@ -30,7 +30,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Face Recognition Attendance App</string>
+   <string>Emotion Recognition For Online Classes</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resource.qrc">
@@ -66,7 +66,7 @@
     <rect>
      <x>10</x>
      <y>500</y>
-     <width>641</width>
+     <width>651</width>
      <height>80</height>
     </rect>
    </property>
@@ -114,7 +114,7 @@
     <rect>
      <x>660</x>
      <y>10</y>
-     <width>281</width>
+     <width>291</width>
      <height>61</height>
     </rect>
    </property>
@@ -186,8 +186,8 @@
     <rect>
      <x>660</x>
      <y>110</y>
-     <width>271</width>
-     <height>271</height>
+     <width>281</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="title">
@@ -196,9 +196,9 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>30</y>
-      <width>97</width>
+      <width>207</width>
       <height>211</height>
      </rect>
     </property>
@@ -244,6 +244,21 @@
         </font>
        </property>
        <property name="text">
+        <string>Detected Emotion :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="font">
+        <font>
+         <family>Roboto Condensed Light</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
         <string>Clocked Time : </string>
        </property>
       </widget>
@@ -255,7 +270,7 @@
      <rect>
       <x>120</x>
       <y>30</y>
-      <width>131</width>
+      <width>151</width>
       <height>211</height>
      </rect>
     </property>
@@ -277,6 +292,21 @@
      </item>
      <item>
       <widget class="QLabel" name="StatusLabel">
+       <property name="font">
+        <font>
+         <family>Roboto Condensed Light</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="DetectedEmotionLabel">
        <property name="font">
         <font>
          <family>Roboto Condensed Light</family>
