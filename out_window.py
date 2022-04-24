@@ -28,6 +28,8 @@ class Ui_OutputDialog(QDialog):
         self.counter = 0
         self.emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
 
+        
+
         #Update time
         now = QDate.currentDate()
         current_date = now.toString('ddd dd MMMM yyyy')
@@ -36,6 +38,8 @@ class Ui_OutputDialog(QDialog):
         self.Time_Label.setText(current_time)
         self.TimeList1 = []
         self.TimeList2 = []
+        self.ClockInButton.setStyleSheet("background-color : violet")
+        self.ClockOutButton.setStyleSheet("background-color : violet")
 
     @pyqtSlot()
     def startVideo(self, camera_name):
@@ -153,6 +157,7 @@ class Ui_OutputDialog(QDialog):
             :param name: detected face known or unknown one
             :return:
             """
+            
             if self.ClockInButton.isChecked():
                 self.ClockInButton.setEnabled(False)
                 with open('Emotion.csv', 'a') as f:
@@ -207,7 +212,7 @@ class Ui_OutputDialog(QDialog):
                             else:
                                 print('Not clicked.')
                                 self.ClockOutButton.setEnabled(True)
-            self.DetectedEmotionLabel.setText(' '*15+emotion)
+            self.DetectedEmotionLabel.setText(emotion)
         
         
 
