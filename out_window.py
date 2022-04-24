@@ -173,6 +173,7 @@ class Ui_OutputDialog(QDialog):
                                 #self.CalculateElapse(name)
                                 #print('Yes clicked and detected')
                                 self.Time1 = datetime.datetime.now()
+                                self.TimeList1.append(datetime.datetime.now())
                                 #print(self.Time1)
                                 self.ClockInButton.setEnabled(True)
                             else:
@@ -196,6 +197,7 @@ class Ui_OutputDialog(QDialog):
 
                                 self.ElapseList(name)
                                 self.TimeList2.append(datetime.datetime.now())
+                                print(self.TimeList1, self.TimeList2)
                                 CheckInTime = self.TimeList1[-1]
                                 CheckOutTime = self.TimeList2[-1]
                                 self.ElapseHours = (CheckOutTime - CheckInTime)
